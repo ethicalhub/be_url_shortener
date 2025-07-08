@@ -11,6 +11,7 @@
         "strict": true,
         "skipLibCheck": false,
         "noImplicitAny": true,
+        "moduleResolution": "node",
         "paths": {
             "@/*": ["src/*"]
             // "@utils/*": ["src/utils/*"],

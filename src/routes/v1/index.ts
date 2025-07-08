@@ -1,7 +1,6 @@
 import { Router } from 'express'
 const router = Router()
-
-import createRoute from './urlCreate'
+import { urlCreate } from '@/controller/v1/urlCreate.controller'
 
 router.get('/', (req, res) => {
     res.status(200).json({
@@ -12,6 +11,5 @@ router.get('/', (req, res) => {
     })
 })
 
-router.use('/create', createRoute)
-
+router.post('/create', urlCreate)
 export default router
