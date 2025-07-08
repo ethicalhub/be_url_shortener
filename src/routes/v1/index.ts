@@ -1,6 +1,6 @@
 import { Router } from 'express'
 const router = Router()
-import { urlCreate } from '@/controller/v1/urlCreate.controller'
+import { urlCreate, redirectUrl } from '@/controller/v1'
 
 router.get('/', (req, res) => {
     res.status(200).json({
@@ -11,5 +11,6 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/:id', redirectUrl)
 router.post('/create', urlCreate)
 export default router
