@@ -1,17 +1,13 @@
 import { Router } from 'express'
 const router = Router()
 
-import createRoute from './urlCreate'
-
 router.get('/', (req, res) => {
     res.status(200).json({
-        message: 'API is live..',
+        message: 'Create path is live..',
         status: 'ok',
         version: '1.0.0',
         timestamp: new Date().toISOString()
     })
 })
-
-router.use('/create', createRoute)
 
 export default router
