@@ -13,6 +13,10 @@ export const saveShortUrl = async (url: string, shortUrl: string) => {
 }
 
 export const findShortUrl = async (id: string) => {
-    const urlObject = await ShortUrl.findOne({ shortUrl: id })
+    const urlObject = await ShortUrl.findOneAndUpdate(
+        { shortUrl: id },
+        { $inc: { clickCount: 1 } },
+        { new: true }
+    )
     return urlObject
 }
