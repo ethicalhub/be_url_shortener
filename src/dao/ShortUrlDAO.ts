@@ -11,3 +11,8 @@ export const saveShortUrl = async (url: string, shortUrl: string) => {
     const savedShortUrl = await newShortUrl.save()
     return savedShortUrl
 }
+
+export const findShortUrl = async (id: string) => {
+    const urlObject = await ShortUrl.findOne({ shortUrl: id })
+    return urlObject
+}

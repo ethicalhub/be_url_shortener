@@ -1,2 +1,2 @@
 export { createShortUrlController } from './createShortUrl.controller'
-export { redirectUrl } from './redirectUrl.controller'
+export { redirectUrlController } from './redirectUrl.controller'

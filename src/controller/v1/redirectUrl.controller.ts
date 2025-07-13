@@ -1,7 +1,6 @@
 import { Request, Response } from 'express'
-import { ShortUrl } from '@/model'
-
-export const redirectUrl = async (req: Request, res: Response) => {
+import { findShortUrl } from '@/dao/ShortUrlDAO'
+export const redirectUrlController = async (req: Request, res: Response) => {
     const { id } = req.params
 
     if (!id) {
@@ -12,16 +11,16 @@ export const redirectUrl = async (req: Request, res: Response) => {
     }
 
     try {
-        const url = await ShortUrl.findOne({ shortUrl: id })
+        const urlObject = await findShortUrl(id)
 
-        if (!url) {
+        if (!urlObject) {
             res.status(404).json({
                 message: 'Requested short URL is not valid'
             })
             return
         }
 
-        return res.redirect(url.originalUrl)
+        return res.redirect(urlObject.originalUrl)
     } catch (error) {
         console.error('Error during URL redirection:', error)
         res.status(500).json({

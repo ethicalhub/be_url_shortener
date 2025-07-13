@@ -1,6 +1,6 @@
 import { Router } from 'express'
 const router = Router()
-import { createShortUrlController, redirectUrl } from '@/controller/v1'
+import { createShortUrlController } from '@/controller/v1'
 
 router.get('/', (req, res) => {
     res.status(200).json({
@@ -11,6 +11,5 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/:id', redirectUrl)
 router.post('/create', createShortUrlController)
 export default router

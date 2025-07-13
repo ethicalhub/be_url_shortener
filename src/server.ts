@@ -12,6 +12,7 @@ import { connectDb, disconnectDb } from './lib/mongoose'
 
 // router imports
 import v1router from '@/routes/v1'
+import { redirectUrlController } from './controller/v1'
 
 const app = express()
 app.use(express.json())
@@ -45,6 +46,7 @@ app.use(cors(CorsOptions))
     try {
         await connectDb()
         app.use('/api/v1', v1router)
+        app.use('/:id', redirectUrlController)
         app.listen(config.PORT, () => {
             logger.info(`Server is running on http://localhost:${config.PORT}`)
         })
