@@ -1,9 +1,9 @@
 import { generateNanoId } from '@/utils/helpers'
-import { ShortUrlDao } from '@/dao/ShortUrlDAO'
+import { saveShortUrl, saveShortUrl } from '@/dao'
 
 export const createShortUrlService = async (url: string) => {
     const shortUrl = generateNanoId(8)
-    const savedShortUrlDao = await ShortUrlDao(url, shortUrl)
+    const savedShortUrlDao = await saveShortUrl(url, shortUrl)
 
     return savedShortUrlDao
 }

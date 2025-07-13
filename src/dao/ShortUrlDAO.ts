@@ -1,6 +1,6 @@
 import { ShortUrl } from '@/model'
 
-export const ShortUrlDao = async (url: string, shortUrl: string) => {
+export const saveShortUrl = async (url: string, shortUrl: string) => {
     const newShortUrl = new ShortUrl({
         originalUrl: url,
         shortUrl: shortUrl,
