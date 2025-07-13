@@ -1,8 +1,7 @@
 import { Request, Response } from 'express'
-import { nanoid } from 'nanoid'
-import { ShortUrl } from '@/model'
+import { createShortUrlService } from '@/services'
 
-export const urlCreate = async (req: Request, res: Response) => {
+export const createShortUrlController = async (req: Request, res: Response) => {
     try {
         const { url } = req.body
 
@@ -13,14 +12,7 @@ export const urlCreate = async (req: Request, res: Response) => {
             return
         }
 
-        const newShortUrl = new ShortUrl({
-            originalUrl: url,
-            shortUrl: nanoid(8),
-            clickCount: 0
-            // user: req.user?._id
-        })
-
-        const savedShortUrl = await newShortUrl.save()
+        const savedShortUrl = await createShortUrlService(url)
         res.status(201).json({
             message: 'Short URL created successfully',
             data: {
